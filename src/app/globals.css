@@ -1,0 +1,119 @@
+/* Chirpline — Signal Newsroom Design System */
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Onest", system-ui, sans-serif;
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Light palette */
+  --color-bg-light: #FFFFFF;
+  --color-surface-light: #F7F9FB;
+  --color-elevated-light: #EEF2F6;
+  --color-hairline-light: #E1E7EE;
+  --color-text-light: #0F1419;
+  --color-muted-light: #5B6B7C;
+
+  /* Dark palette (default) */
+  --color-bg-dark: #05080C;
+  --color-surface-dark: #0C1218;
+  --color-elevated-dark: #141C25;
+  --color-hairline-dark: #202B38;
+  --color-text-dark: #EAF1F8;
+  --color-muted-dark: #8497AB;
+
+  /* Dim palette */
+  --color-bg-dim: #15202B;
+  --color-surface-dim: #1B2836;
+  --color-elevated-dim: #243447;
+  --color-hairline-dim: #2F4156;
+  --color-text-dim: #E7EEF5;
+  --color-muted-dim: #8FA3B8;
+
+  /* Signal accent */
+  --color-signal: #1D9BFF;
+  --color-signal-bright: #4DB6FF;
+  --color-signal-deep: #0A62B8;
+  --color-signal-soft: #E3F3FF;
+
+  /* Semantic */
+  --color-like: #F91880;
+  --color-repost: #00BA7C;
+  --color-bookmark: #FFB020;
+  --color-context: #8B5CF6;
+  --color-live: #FF3B3B;
+
+  /* Status */
+  --color-success: #1DB97D;
+  --color-warning: #F5A524;
+  --color-error: #F0445A;
+
+  /* Radius */
+  --radius-card: 16px;
+  --radius-input: 12px;
+  --radius-pill: 9999px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background-color: #05080C;
+    color: #EAF1F8;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(29, 155, 255, 0.2);
+    color: inherit;
+  }
+
+  /* Focus rings */
+  *:focus-visible {
+    outline: 2px solid #1D9BFF;
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #202B38; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2F4156; }
+}
+
+/* Signal pulse dot */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 59, 59, 0); }
+}
+
+.signal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FF3B3B;
+  animation: pulse 2s infinite;
+}
+
+/* Character ring animation */
+@keyframes ringFill {
+  from { stroke-dashoffset: 283; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Shimmer skeleton */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #141C25 25%, #1B2836 50%, #141C25 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
